@@ -1,22 +1,32 @@
 import React from 'react';
 import styled from "styled-components";
 
-const StyledButton = styled.button`
-  background-color: black;
-  font-size: 32px;
-  color: white;
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => props.primary ? "palevioletred" : "white"};
+  color: ${props => props.primary ? "white" : "palevioletred"};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;
 
-const StyledCar = styled.div`
-background: black;
 
-`;
+class App extends React.Component {
+  shoot() {
+    alert("Great Shot!");
+  }
 
-function App() {
-  return <StyledButton> Login </StyledButton>;
-
+  render() {
+    return (
+      <div>
+        <Button primary onClick={this.shoot}>Take the shot!</Button>
+        <Button onClick={this.shoot}>Take the shot!</Button>
+      </div>
+    );
+  }
 }
-
 
 
 export default App;

@@ -1,15 +1,14 @@
 const path = require('path');
+const WebpackBar = require('webpackbar');
 
 module.exports = {
-
     entry: {
         index: './src/index.js',
-        framework: ['react', 'react-dom','styled-components'],
+        framework: ['react', 'react-dom', 'styled-components'],
     },
 
     output: {
-        filename: 'js/[name].[contenthash:8].bundle.js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, '../dist'),
     },
     module: {
         rules: [
@@ -19,5 +18,8 @@ module.exports = {
                 exclude: /node_modules/,
             }
         ]
-    }
+    },
+    plugins: [
+        new WebpackBar()
+    ]
 }

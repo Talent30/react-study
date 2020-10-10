@@ -7,28 +7,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
+    output: {
+        filename: 'js/[name].[contenthash:8].bundle.js',
+    },
     optimization: {
         splitChunks: {
-            chunks: 'all',
+            chunks: 'async',
             minSize: 30000,
             maxSize: 0,
             minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            automaticNameMaxLength: 30,
+            name: true,
             cacheGroups: {
-                framework: {
-                    test: "framework",
-                    name: "framework",
-                    enforce: true
-                },
-                vendors: {
-                    priority: -10,
-                    test: /node_modules/,
-                    name: "vendor",
-                    enforce: true,
-                },
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
             }
+        },
+        runtimeChunk: {
+            name: entrypoint => `runtime~${entrypoint.name}`
         }
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -41,5 +45,4 @@ module.exports = merge(common, {
         }),
         new CleanWebpackPlugin()
     ]
-
 });
