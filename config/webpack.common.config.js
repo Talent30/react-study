@@ -19,7 +19,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         use: [
           'thread-loader',
-          'cache-loader',
           {
             loader: 'babel-loader',
             options: {
