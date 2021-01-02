@@ -2,80 +2,13 @@
   "name": "react-study",
   "version": "1.0.0",
   "description": "Personal study project",
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "usage",
-          "modules": false,
-          "corejs": "3",
-          "targets": "> 0.5%, last 2 versions, Firefox ESR, not dead"
-        }
-      ],
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ],
-    "plugins": [
-      "@babel/plugin-transform-runtime"
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "airbnb",
-      "plugin:react/recommended"
-    ],
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 12,
-      "sourceType": "module"
-    },
-    "plugins": [],
-    "ignorePatterns": [
-      "dist"
-    ],
-    "rules": {
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "**/webpack.*.js"
-          ]
-        }
-      ]
-    }
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-rational-order"
-    ],
-    "plugins": [
-      "stylelint-order",
-      "stylelint-declaration-block-no-ignored-properties"
-    ],
-    "rules": {},
-    "ignoreFiles": [
-      "node_modules/**/*",
-      "dist/**/*"
-    ]
-  },
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow npm",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:build": "webpack --config ./config/webpack.prod.config.js",
-    "start:dev": "webpack serve --config ./config/webpack.dev.config.js"
+    "build": "webpack --config ./config/webpack.prod.config.js",
+    "dev": "webpack serve --config ./config/webpack.dev.config.js",
+    "upgrade":"npx npm-check -u"
   },
   "keywords": [],
   "author": "Jon Sun",
@@ -87,10 +20,10 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/runtime-corejs3": "^7.12.5",
     "babel-loader": "^8.2.2",
-    "clean-webpack-plugin": "^3.0.0",
-    "core-js": "^3.8.1",
+    "css-loader": "^5.0.1",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
@@ -98,12 +31,17 @@
     "eslint-webpack-plugin": "^2.4.1",
     "html-webpack-plugin": "^4.5.0",
     "npm-check": "^5.9.2",
+    "postcss": "^8.2.2",
+    "postcss-loader": "^4.1.0",
+    "postcss-import": "^14.0.0",
     "react-dev-utils": "^11.0.1",
     "react-is": "^17.0.1",
+    "style-loader": "^2.0.0",
     "stylelint": "^13.8.0",
+    "stylelint-config-recess-order": "^2.3.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
-    "stylelint-order": "^4.1.0",
+    "stylelint-no-unsupported-browser-features": "^4.1.4",
     "thread-loader": "^3.0.1",
     "webpack": "^5.11.0",
     "webpack-bundle-analyzer": "^4.3.0",
@@ -113,7 +51,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "autoprefixer": "^10.1.0",
+    "core-js": "^3.8.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  }
+    "react-dom": "^17.0.1",
+    "tailwindcss": "^2.0.2"
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

@@ -17,6 +17,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         use: [
           'thread-loader',
           {
@@ -26,7 +27,6 @@ module.exports = {
             },
           },
         ],
-        exclude: /node_modules/,
       },
     ],
   },
@@ -35,6 +35,7 @@ module.exports = {
     new webpack.AutomaticPrefetchPlugin(),
     new ESLintPlugin({
       files: 'src/*',
+      threads: true,
     }),
   ],
 };

@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.config.js');
 
@@ -12,6 +11,20 @@ module.exports = merge(common, {
   },
   output: {
     filename: 'js/[name].[contenthash:8].bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sass|css|scss)$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+
+      },
+    ],
   },
   optimization: {
     splitChunks: {
@@ -27,17 +40,15 @@ module.exports = merge(common, {
     runtimeChunk: true,
   },
   plugins: [
+
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       inject: true,
       minify: true,
     }),
-    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime/]),
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      // analyzerHost: '0.0.0.0',
-      // analyzerPort: 8888,
     }),
-    new CleanWebpackPlugin(),
   ],
 });

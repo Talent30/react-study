@@ -13,18 +13,20 @@ module.exports = merge(common, {
   output: {
     filename: 'js/[name].js',
   },
-  devServer: {
-    host: '0.0.0.0',
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000,
-    hot: true,
+  module: {
+    devServer: {
+      host: '0.0.0.0',
+      contentBase: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 9000,
+      hot: true,
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'public/index.html',
+        inject: true,
+      }),
+      new webpack.HotModuleReplacementPlugin(),
+    ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      inject: true,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
 });
