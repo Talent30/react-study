@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ESLintPlugin = require('eslint-webpack-plugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -33,9 +33,9 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new webpack.AutomaticPrefetchPlugin(),
-    new ESLintPlugin({
+    /* new ESLintPlugin({
       files: 'src/*',
       threads: true,
-    }),
+    }), */
   ],
 };

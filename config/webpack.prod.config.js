@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
@@ -16,9 +17,9 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(sass|css|scss)$/,
-        exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'thread-loader',
           'css-loader',
           'postcss-loader',
         ],
@@ -40,7 +41,11 @@ module.exports = merge(common, {
     runtimeChunk: true,
   },
   plugins: [
-
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css',
+      ignoreOrder: false,
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       inject: true,

@@ -4,5 +4,5 @@ import App from './app';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('timer-example'),
+  document.getElementById('root'),
 );
