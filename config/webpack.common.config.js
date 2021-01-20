@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    // new webpack.AutomaticPrefetchPlugin(),
+    new webpack.AutomaticPrefetchPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       threads: true,
