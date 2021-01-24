@@ -8,7 +8,6 @@ module.exports = {
   },
   entry: {
     index: './src/index.jsx',
-    // framework: ['react', 'react-dom', 'styled-components'],
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

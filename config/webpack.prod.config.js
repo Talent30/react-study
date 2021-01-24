@@ -1,8 +1,9 @@
 const { merge } = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const RemovePlugin = require('remove-files-webpack-plugin');
+
 const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
@@ -31,14 +32,23 @@ module.exports = merge(common, {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
           name: 'vendors',
           chunks: 'all',
-          reuseExistingChunk: true,
+        },
+        polyfill: {
+          test: /[\\/]node_modules[\\/](.*core-js.*|.*babel.*)[\\/]/,
+          name: 'polyfill',
+          chunks: 'all',
+        },
+        common: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'common',
+          chunks: 'all',
         },
       },
     },
-    runtimeChunk: true,
+    runtimeChunk: 'single',
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -48,12 +58,21 @@ module.exports = merge(common, {
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
-      inject: true,
-      minify: true,
     }),
-    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+    // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
+    }),
+    new RemovePlugin({
+      before: {
+        test: [
+          {
+            folder: 'dist',
+            method: (absoluteItemPath) => new RegExp(/[.*]/).test(absoluteItemPath),
+            recursive: true,
+          },
+        ],
+      },
     }),
   ],
 });
