@@ -6,8 +6,8 @@
   "scripts": {
     "preinstall": "pnpx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./config/webpack.prod.config.js",
-    "dev": "webpack serve --config ./config/webpack.dev.config.js",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.prod.config.js",
+    "dev": "NODE_ENV=development webpack serve --config ./config/webpack.dev.config.js",
     "upgrade": "pnpm update  --latest --interactive",
     "coverage": "pnpx browserslist --coverage 'defaults, not IE 11, not dead'"
   },
@@ -34,7 +34,7 @@
     "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-webpack-plugin": "^2.4.3",
     "html-webpack-plugin": "^4.5.1",
@@ -55,8 +55,8 @@
     "webpack": "^5.17.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^4.0.0-beta.0",
-    "webpack-merge": "^5.7.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",

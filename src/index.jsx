@@ -1,4 +1,4 @@
-import React from 'react';
+import 'core-js';
 import ReactDOM from 'react-dom';
 import App from './app';
 

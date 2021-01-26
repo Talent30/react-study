@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './styles.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <p>
+      <p className=''>
         You clicked me
         {' '}
         {count}

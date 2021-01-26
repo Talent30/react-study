@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+console.log('NODE_ENV:', process.env.NODE_ENV);
+
 module.exports = {
   resolve: {
     extensions: ['.jsx', '.js', '.json'],
