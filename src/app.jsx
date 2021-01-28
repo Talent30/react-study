@@ -7,14 +7,14 @@ function App() {
 
   return (
     <div>
-      <p className=''>
+      <p>
         You clicked me
         {' '}
         {count}
         {' '}
         times
       </p>
-      <button className="button" type="button" onClick={() => setCount(count + 4)}>
+      <button className="bg-red-500 " type="button" onClick={() => setCount(count + 4)}>
         Click me
       </button>
     </div>

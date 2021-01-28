@@ -28,6 +28,7 @@ module.exports = merge(common, {
   },
   devServer: {
     host: '0.0.0.0',
+    http2: true,
     compress: true,
     port: 9000,
   },
