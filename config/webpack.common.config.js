@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 console.log('NODE_ENV:', process.env.NODE_ENV);
 
@@ -34,6 +35,7 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new webpack.AutomaticPrefetchPlugin(),
+    new StylelintPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       threads: true,

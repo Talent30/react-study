@@ -32,17 +32,17 @@ module.exports = merge(common, {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          test: /[/\\]node_modules[/\\](react|react-dom)[/\\]/,
           name: 'vendors',
           chunks: 'all',
         },
         polyfill: {
-          test: /[\\/]node_modules[\\/](.*core-js.*|.*babel.*)[\\/]/,
+          test: /[/\\]node_modules[/\\](.*core-js.*|.*babel.*)[/\\]/,
           name: 'polyfill',
           chunks: 'all',
         },
         common: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[/\\]node_modules[/\\]/,
           name: 'common',
           chunks: 'all',
         },
@@ -68,7 +68,7 @@ module.exports = merge(common, {
         test: [
           {
             folder: 'dist',
-            method: (absoluteItemPath) => new RegExp(/[.*]/).test(absoluteItemPath),
+            method: (absoluteItemPath) => new RegExp(/[*.]/).test(absoluteItemPath),
             recursive: true,
           },
         ],

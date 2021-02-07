@@ -3,7 +3,7 @@ const plugins = [];
 
 if (process.env.NODE_ENV === 'development') {
   presets.push(
-    ['@babel/preset-react', { runtime: 'automatic' }],
+    ['@babel/preset-react', { runtime: 'automatic', development: true }],
   );
 } else if (process.env.NODE_ENV === 'production') {
   presets.push(

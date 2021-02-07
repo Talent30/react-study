@@ -5,8 +5,10 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    'plugin:react/recommended',
-    'plugin:compat/recommended',
+    'airbnb/hooks',
+    'airbnb-babel',
+    'plugin:unicorn/recommended',
+    'plugin:json/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -16,18 +18,14 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [],
-  ignorePatterns: [
-    'dist',
-  ],
+  ignorePatterns: ['dist', 'node_modules'],
   rules: {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: [
-          '**/webpack.*.js',
-        ],
+        devDependencies: ['**/webpack.*.js'],
       },
     ],
   },
