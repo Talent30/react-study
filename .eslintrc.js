@@ -25,7 +25,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/webpack.*.js'],
+        devDependencies: ['**/webpack.*.js', '**/*.config.js'],
       },
     ],
   },

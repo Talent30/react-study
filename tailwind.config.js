@@ -1,3 +1,5 @@
+const tailwindForms = require('@tailwindcss/forms');
+
 module.exports = {
   purge: {
     // enabled: true,
@@ -10,5 +12,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [tailwindForms],
 };
