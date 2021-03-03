@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const ErrorExample = () => {
+const ErrorExample = (): JSX.Element => {
   const [text, setText] = useState('random title');
   const handleClick = () => {
     if (text === 'random title') {

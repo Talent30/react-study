@@ -3,7 +3,7 @@ const tailwindForms = require('@tailwindcss/forms');
 module.exports = {
   purge: {
     // enabled: true,
-    content: ['./src/**/*.jsx'],
+    content: ['./src/**/*.tsx'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {

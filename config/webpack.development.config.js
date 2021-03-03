@@ -5,7 +5,7 @@ const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   cache: {
     type: 'memory',
   },
@@ -16,19 +16,13 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(sass|css|scss)$/,
-        use: [
-          'style-loader',
-          'thread-loader',
-          'css-loader',
-          'postcss-loader',
-        ],
-
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
   devServer: {
     host: '0.0.0.0',
-    firewall: false,
+    hot: true,
     compress: true,
     port: 9000,
   },

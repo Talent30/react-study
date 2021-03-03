@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import data from '../../data';
 
-const UseStateArray = () => {
+const UseStateArray = (): JSX.Element => {
   const [people, setPeople] = useState(data);
-  const removeItem = (id) => {
+  const removeItem = (id: number) => {
     const newPeople = people.filter((person) => person.id !== id);
     setPeople(newPeople);
   };

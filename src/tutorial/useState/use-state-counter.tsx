@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UseStateCounter = () => {
+const UseStateCounter = (): JSX.Element => {
   const [value, setValue] = useState(0);
   return (
     <>
@@ -26,7 +26,7 @@ const UseStateCounter = () => {
         <button
           type="button"
           onClick={() => {
-            setValue(value + 1);
+            setValue(value + 4);
           }}
         >
           Increase

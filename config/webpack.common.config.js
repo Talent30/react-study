@@ -1,16 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 console.log('NODE_ENV:', process.env.NODE_ENV);
 
 module.exports = {
   resolve: {
-    extensions: ['.jsx', '.js', '.json'],
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   entry: {
-    index: './src/index.jsx',
+    index: './src/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -18,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
           'thread-loader',
@@ -36,9 +36,18 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new webpack.AutomaticPrefetchPlugin(),
     new StylelintPlugin(),
-    new ESLintPlugin({
-      extensions: ['js', 'jsx'],
-      threads: true,
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: './tsconfig.json',
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: 'write-references',
+      },
+      eslint: {
+        files: './src/**/*.{ts,tsx,js,jsx}', // required - same as command `eslint ./src/**/*.{ts,tsx,js,jsx} --ext .ts,.tsx,.js,.jsx`
+      },
     }),
   ],
 };

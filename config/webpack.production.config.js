@@ -3,7 +3,6 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
-
 const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
@@ -24,7 +23,6 @@ module.exports = merge(common, {
           'css-loader',
           'postcss-loader',
         ],
-
       },
     ],
   },
@@ -68,7 +66,8 @@ module.exports = merge(common, {
         test: [
           {
             folder: 'dist',
-            method: (absoluteItemPath) => new RegExp(/[*.]/).test(absoluteItemPath),
+            method: (absoluteItemPath) =>
+              new RegExp(/[*.]/).test(absoluteItemPath),
             recursive: true,
           },
         ],
