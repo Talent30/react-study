@@ -1,5 +1,5 @@
 import './styles.css';
-import Setup from './tutorial/conditionalRendering/1-multiple-returns';
+import Setup from './tutorial/useEffect/1-use-effect-basics';
 
 function App(): JSX.Element {
   return (

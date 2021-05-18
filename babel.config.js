@@ -8,14 +8,11 @@ if (process.env.NODE_ENV === 'development') {
   );
 } else if (process.env.NODE_ENV === 'production') {
   presets.push(
-    [
-      '@babel/preset-env',
-      { useBuiltIns: 'entry', corejs: '3.9.1', bugfixes: true },
-    ],
+    ['@babel/preset-env'],
     ['@babel/preset-react', { runtime: 'automatic' }],
     ['@babel/preset-typescript'],
   );
-  plugins.push(['@babel/plugin-transform-runtime']);
+  plugins.push(['polyfill-corejs3', { "method": 'usage-global' }]);
 }
 
 module.exports = (api) => {

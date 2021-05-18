@@ -14,7 +14,7 @@ const UseEffectBasics = (): JSX.Element => {
     <>
       <h1>{value}</h1>
       <button className="btn" type="button" onClick={() => setValue(value + 1)}>
-        Clicke Me
+        Click Me
       </button>
     </>
   );

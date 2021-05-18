@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.config.js');
 
@@ -21,16 +20,16 @@ module.exports = merge(common, {
     ],
   },
   devServer: {
-    host: '0.0.0.0',
+    host: 'localhost',
     hot: true,
     compress: true,
     port: 9000,
+    disableHostCheck: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 });

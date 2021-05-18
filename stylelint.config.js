@@ -1,12 +1,6 @@
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-recess-order',
-  ],
-  plugins: [
-    'stylelint-declaration-block-no-ignored-properties',
-    'stylelint-no-unsupported-browser-features',
-  ],
+  extends: ['stylelint-config-standard'],
+  plugins: ['stylelint-no-unsupported-browser-features'],
   rules: {
     'plugin/no-unsupported-browser-features': [
       true,
@@ -15,8 +9,6 @@ module.exports = {
       },
     ],
   },
-  ignoreFiles: [
-    'node_modules/**/*',
-    'dist/**/*',
-  ],
+  ignoreFiles: ['node_modules/**/*', 'dist/**/*'],
 };
+
