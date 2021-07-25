@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "coverage",
+			"problemMatcher": [],
+			"label": "npm: coverage",
+			"detail": "npm exec browserslist --coverage 'defaults, not IE 11, not dead'"
+		}
+	]
+}
