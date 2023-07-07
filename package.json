@@ -55,7 +55,7 @@
     "react-is": "^17.0.2",
     "remove-files-webpack-plugin": "^1.4.5",
     "style-loader": "^3.2.1",
-    "stylelint": "^13.13.1",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-no-unsupported-browser-features": "^5.0.1",
     "stylelint-webpack-plugin": "^3.0.1",
